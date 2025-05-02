@@ -1,0 +1,111 @@
+# Base URL to which clients will make their requests.
+# Useful if the API is proxied through reverse proxy like nginx.
+# Value needs to contain full URL with protocol scheme, e.g. https://braize.pajlada.com/chatterino
+#base-url: ""
+
+# Address to which API will bind and start listening on
+#bind-address: ":1234"
+
+# Max content size in bytes - requests with body bigger than this value will be skipped
+#max-content-length: 5242880
+
+# When enabled, will attempt to use libvips library to build animated thumbnails.
+# Can increase CPU usage and cache storage by a lot. Enabled by default.
+#enable-animated-thumbnails: true
+
+# Maximum width/height pixel size count of the thumbnails sent to the clients.
+#max-thumbnail-size: 300
+
+# Database connection string for connecting to your PostgreSQL instance
+# Example value: "host=/var/run/postgresql user=pajlada database=chatterino-api"
+# See https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING for more details
+#dsn: ""
+
+# When enabled, will host a Prometheus metrics HTTP server on the prometheus-bind-address.
+#enable-prometheus: true
+
+# Address to which the API will host its Prometheus metrics
+#prometheus-bind-address: "127.0.0.1:9382"
+
+# Discord token, provides rich information for Discord invite links
+#discord-token: ""
+
+# Cache duration for Discord invite links
+#discord-invite-cache-duration: 6h
+
+# Twitch Developer Application client ID and Twitch Developer Application client secret, provide rich information for Twitch Clips
+#twitch-client-id: ""
+#twitch-client-secret: ""
+
+# Cache duration for Twitch Username -> Twitch ID lookups
+#twitch-username-cache-duration: 1h
+# Cache duration for Twitch clip links
+#twitch-clip-cache-duration: 1h
+
+# YouTube API key, provides rich information for YouTube video links
+#youtube-api-key: ""
+
+# Cache duration for YouTube channel/user profile links
+#youtube-channel-cache-duration: 48h
+# Cache duration for YouTube video links
+#youtube-video-cache-duration: 48h
+
+# Twitter bearer token, provides rich information for tweet and Twitter user links
+#twitter-bearer-token: ""
+
+# Cache duration for Twitter post/tweet links
+#twitter-tweet-cache-duration: 24h
+# Cache duration for Twitter user profile links
+#twitter-user-cache-duration: 24h
+
+# Imgur client ID, provides rich information for imgur image links
+#imgur-client-id: ""
+
+# Cache duration for Imgur image and album links
+#imgur-cache-duration: 1h
+
+# oEmbed Facebook app ID and app secret, provide rich information for Facebook and Instagram links
+#oembed-facebook-app-id: ""
+#oembed-facebook-app-secret: ""
+
+# Path to a json file containing supported oEmbed resolvers
+#oembed-providers-path: "./data/oembed/providers.json"
+
+# Cache duration for oEmbed links
+#oembed-cache-duration: 1h
+
+# Cache duration proxied thumbnails
+#thumbnail-cache-duration: 10m
+
+# Cache duration for links that don't have a specialized resolver
+#default-link-cache-duration: 10m
+
+# Cache duration for BetterTTV emote links
+#bttv-emote-cache-duration: 1h
+
+# Cache duration for FrankerFaceZ emote links
+#ffz-emote-cache-duration: 1h
+
+# Cache duration for 7TV emote links
+#seventv-emote-cache-duration: 1h
+
+# Cache duration for livestreamfails.com clip links
+#livestreamfails-clip-cache-duration: 1h
+
+# Cache duration for Supinic.com track links
+#supinic-track-cache-duration: 1h
+
+# Cache duration for Wikipedia article links
+#wikipedia-article-cache-duration: 1h
+
+# Cache duration for Twitch username links
+#twitch-username-cache-duration: 10m
+
+# Minimum level of log message importance required for the log message to not be filtered out.
+# Available levels: debug, info, warn, error
+# See https://pkg.go.dev/go.uber.org/zap for more information about the logging library we use
+#log-level: info
+
+# Enables much more verbose logging, useful for debugging.
+# This makes all log messages include a stack trace to see where they were called from.
+#log-development: false

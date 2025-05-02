@@ -1,0 +1,42 @@
+package seventv
+
+import (
+	"context"
+	"errors"
+	"html/template"
+	"regexp"
+
+	"github.com/lonelyshoeh/api/internal/db"
+	"github.com/lonelyshoeh/api/pkg/config"
+	"github.com/lonelyshoeh/api/pkg/resolver"
+	"github.com/lonelyshoeh/api/pkg/utils"
+)
+
+const (
+	tooltipTemplate = `<div style="text-align: left;">
+<b>{{.Code}}</b><br>
+<b>{{.Type}} 7TV Emote</b><br>
+<b>By:</b> {{.Uploader}}` +
+		`{{ if .Unlisted }}` + `
+<li><b><span style="color: red;">UNLISTED</span></b></li>{{ end }}
+</div>`
+)
+
+var (
+	errInvalidSevenTVEmotePath = errors.New("invalid SevenTV emote path")
+
+	domains = map[string]struct{}{
+		"7tv.app":     {},
+		"old.7tv.app": {},
+	}
+
+	emotePathRegex = regexp.MustCompile(`/emotes/([a-f\d]{24}|[0-7][\dA-HJKMNP-TV-Z]{25})`)
+
+	seventvEmoteTemplate = template.Must(template.New("seventvEmoteTooltip").Parse(tooltipTemplate))
+)
+
+func Initialize(ctx context.Context, cfg config.APIConfig, pool db.Pool, resolvers *[]resolver.Resolver) {
+	apiURL := utils.MustParseURL("https://7tv.io/v3/emotes")
+
+	*resolvers = append(*resolvers, NewEmoteResolver(ctx, cfg, pool, apiURL))
+}
